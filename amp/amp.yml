@@ -5,10 +5,9 @@ integrations:
    provider: hubspot
    read:
     objects:
-      - objectName: list
+      - objectName: lists
         destination: listsWebhook
         schedule: "*/30 * * * *" # every 30 minutes
         # Always read these fields
         requiredFields:
           - fieldName: name
-          - fieldName: createDate

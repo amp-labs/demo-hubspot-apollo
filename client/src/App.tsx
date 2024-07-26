@@ -2,8 +2,8 @@ import { AmpersandProvider, InstallIntegration } from "@amp-labs/react";
 
 function App() {
   const options = {
-    projectId: import.meta.env.VITE_AMPERSAND_PROJECT_ID, // Your Ampersand project ID.
-    apiKey: import.meta.env.VITE_AMPERSAND_API_KEY, // Your Ampersand API key.
+    projectId: import.meta.env.VITE_AMPERSAND_PROJECT_ID as string, // Your Ampersand project ID.
+    apiKey: import.meta.env.VITE_AMPERSAND_API_KEY as string, // Your Ampersand API key.
   };
 
   const myIntegrationName = "readListsAndContacts"
