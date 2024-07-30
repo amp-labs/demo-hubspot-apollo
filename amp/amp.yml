@@ -11,3 +11,9 @@ integrations:
         # Always read these fields
         requiredFields:
           - fieldName: name
+      - objectName: contact
+        destination: contactsWebhook
+        schedule: "*/30 * * * *" # every 30 minutes
+        # Always read these fields
+        requiredFields:
+          - fieldName: name
