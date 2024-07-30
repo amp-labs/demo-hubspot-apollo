@@ -7,13 +7,26 @@ integrations:
     objects:
       - objectName: lists
         destination: listsWebhook
-        schedule: "*/30 * * * *" # every 30 minutes
+        schedule: "0 0 * * *" # once a day
         # Always read these fields
         requiredFields:
           - fieldName: name
       - objectName: contact
         destination: contactsWebhook
-        schedule: "*/30 * * * *" # every 30 minutes
+        schedule: "0 0 * * *" # once a day
+        # Always read these fields
+        requiredFields:
+          - fieldName: name
+ - name: readContacts 
+   displayName: Read Contacts from Apollo
+   provider: apollo
+   proxy:
+    enabled: true
+   read:
+    objects:
+      - objectName: contacts
+        destination: apolloContactsWebhook
+        schedule: "0 0 * * *" # once a day
         # Always read these fields
         requiredFields:
           - fieldName: name
