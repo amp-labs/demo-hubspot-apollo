@@ -25,7 +25,14 @@ To run the client, follow these steps:
    yarn install
    ```
 
-3. Start the development server:
+3. Add a `.env` with your ampersand credentials and project id similar to `.env.example` 
+
+    ```
+    VITE_AMPERSAND_PROJECT_ID=
+    VITE_AMPERSAND_API_KEY=
+    ```
+
+4. Start the development server:
    ```sh
    yarn run dev
    ```
