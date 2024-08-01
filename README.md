@@ -27,9 +27,14 @@ To run the client, follow these steps:
 
 3. Add a `.env` with your ampersand credentials and project id similar to `.env.example` 
 
+    ```sh
+    cp client/.env.example client/.env
     ```
-    VITE_AMPERSAND_PROJECT_ID=
-    VITE_AMPERSAND_API_KEY=
+
+    Update the `.env` file with your credentials.
+    ```
+    VITE_AMPERSAND_PROJECT_ID=<YOUR_AMPERSAND_PROJECT_ID>
+    VITE_AMPERSAND_API_KEY=<YOUR_AMPERSAND_API_KEY>
     ```
 
 4. Start the development server:
