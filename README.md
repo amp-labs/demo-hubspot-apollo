@@ -45,6 +45,36 @@ To run the client, follow these steps:
 4. Open your browser and go to `http://localhost:3000` to see the application in action.
 
 
+# Server 
+
+To run the server, follow these steps:
+
+1. Navigate to the `server` directory:
+   ```sh
+   cd demo-hubspot-apollo/server
+   ```
+
+2. Install the dependencies:
+   ```sh
+   pnpm install
+   ```
+
+3. Add a `.env` file with your Ampersand API key similar to `.env.example`:
+   ```sh
+   cp .env.example .env
+   ```
+
+   Update the `.env` file with your API key:
+   ```
+   AMP_API_KEY=<YOUR_API_KEY>
+   ```
+
+4. Start the server:
+   ```sh
+   pnpm start
+   ```
+
+5. The server will be running on `http://localhost:4001`.
 
 
 # Ampersand configuration 
