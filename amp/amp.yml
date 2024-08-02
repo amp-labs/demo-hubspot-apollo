@@ -14,7 +14,7 @@ integrations:
         backfill:
           defaultPeriod:
             days: 30
-      - objectName: contact
+      - objectName: contacts
         destination: contactsWebhook
         schedule: "0 0 * * *" # once a day
         # Always read these fields
