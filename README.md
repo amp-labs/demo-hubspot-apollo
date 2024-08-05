@@ -76,6 +76,21 @@ To run the server, follow these steps:
 
 5. The server will be running on `http://localhost:4001`.
 
+6. When developing locally, connect `localhost` to a public domain so that Ampersand can write to the destinations specificed in the server. 
+
+    ```sh
+
+    ngrok http --domain=<YOUR_STATIC_DOMAIN_URL> 4001 
+    
+    # or use the dynamic https URL generated below in webhook URL under destinations in the Ampersand dashboard
+
+    ngrok http 4001
+    
+    ```
+
+> Note: when deploying this integration to a hosted environment ensure destinations are configured to point to the hosted URL of the `server`.
+
+
 
 # Ampersand configuration 
 The Ampersand configuration is defined in the `amp.yml` file located in the `amp` directory. This file specifies the integrations and their respective settings.
