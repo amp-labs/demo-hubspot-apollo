@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@amp-labs/react@^1.5.3":
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/@amp-labs/react/-/react-1.5.3.tgz#93dd9eaf4e5328226d5b58bac5dd2aa3a547596c"
-  integrity sha512-qTH4g28dksCzReNAukRmKXXdgUpZXPrqWNL15c/1ZctqBqeiY6Do48azOVpBdEkvm7vaOib8JQUzGIp2Yf+NIg==
+"@amp-labs/react@*":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@amp-labs/react/-/react-1.7.0.tgz#476c9148b89b68c6b7f5eb6ea0d133862143f4b7"
+  integrity sha512-w+h7JlV2NjySIUGx9qwEIfZoksJ88WfOx0Kkaii20jFUJP86EP5QfrnO52RNkP9xJvth0m2KsLYDGnD/0GGhBw==
   dependencies:
     "@chakra-ui/icons" "^2.1.1"
     immer "^10.0.3"
@@ -1805,10 +1805,10 @@ focus-lock@^1.3.5:
   dependencies:
     tslib "^2.0.3"
 
-framer-motion@^11.3.17:
-  version "11.3.17"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.3.17.tgz#47bd13fe3af660e4e3eebaf21f3a0d9d32c7939b"
-  integrity sha512-LZcckvZL8Rjod03bud8LQcp+R0PLmWIlOSu+NVc+v6Uh43fQr4IBsEAX7sSn7CdBQ1L0fZ/IqSXZVPnGFSMxHw==
+framer-motion@^11.3.19:
+  version "11.3.19"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-11.3.19.tgz#7a2bd72ed1dd04a47d8ecb8444447cfc47c70984"
+  integrity sha512-+luuQdx4AsamyMcvzW7jUAJYIKvQs1KE7oHvKkW3eNzmo0S+3PSDWjBuQkuIP9WyneGnKGMLUSuHs8OP7jKpQg==
   dependencies:
     tslib "^2.4.0"
 

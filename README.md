@@ -102,3 +102,12 @@ The Ampersand configuration is defined in the `amp.yml` file located in the `amp
 
 The `amp.yml` file ensures that the specified integrations are configured to read data from Hubspot and Apollo at scheduled intervals and send the data to the designated webhooks.
 
+
+### Ensure the amp configuration is deployed 
+
+    ```sh
+    
+    amp deploy ./amp --project <YOUR_AMPERSAND_PROJECTID>
+    
+    ```
+

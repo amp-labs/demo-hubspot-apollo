@@ -7,11 +7,11 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@amp-labs/react": "^1.5.3",
+        "@amp-labs/react": "*",
         "@chakra-ui/react": "^2.8.2",
         "@emotion/react": "^11.13.0",
         "@emotion/styled": "^11.13.0",
-        "framer-motion": "^11.3.17",
+        "framer-motion": "^11.3.19",
         "react": "^18.0.0",
         "react-dom": "^18.0.0",
         "react-script-hook": "^1.7.2"
