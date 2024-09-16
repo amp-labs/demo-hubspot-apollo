@@ -19,11 +19,23 @@ interface Contact {
 
 interface WebhookPayload {
   contacts: Contact[];
+  action: string;
+  groupName: string;
+  groupRef: string;
+  installationId: string;
+  objectName: string;
+  projectId: string;
+  provider: string;
+  result: any;
 }
+
 
 app.post('/webhook', async (req: Request, res: Response) => {
   const payload: WebhookPayload = req.body;
-
+  payload?.result?.forEach((resultItem: any) => {
+      console.log("Raw Properties:", resultItem?.raw?.properties);
+  });
+  // TODO: ensure the correct payload structure is being sent from the client
   if (!payload || !payload.contacts) {
     return res.status(400).send('Invalid payload');
   }

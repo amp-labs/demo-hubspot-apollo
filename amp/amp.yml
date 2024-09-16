@@ -20,6 +20,8 @@ integrations:
         # Always read these fields
         requiredFields:
           - fieldName: name
+          - fieldName: email
+          - fieldName: id
         backfill:
           defaultPeriod:
             days: 30
