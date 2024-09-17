@@ -105,9 +105,9 @@ The `amp.yml` file ensures that the specified integrations are configured to rea
 
 ### Ensure the amp configuration is deployed 
 
-    ```sh
-    
-    amp deploy ./amp --project <YOUR_AMPERSAND_PROJECTID>
-    
-    ```
+```sh
+
+amp deploy ./amp --project <YOUR_AMPERSAND_PROJECTID>
+
+```
 
