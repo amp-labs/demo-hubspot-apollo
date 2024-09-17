@@ -14,10 +14,11 @@ const PORT = process.env.PORT || 4001;
 app.use(bodyParser.json());
 
 // Apollo API configuration
-const APOLLO_AMP_PROXY_API_URL = "https://proxy.withampersand.com/v1/contacts/search";
+const AMP_PROXY_BASE_URL = "https://proxy.withampersand.com";
 const AMP_API_KEY = process.env.AMP_API_KEY;
 
 interface Contact {
+  id: string;
   name: string;
   email?: string;
   // Add other fields as necessary
@@ -40,17 +41,22 @@ interface ContactStored {
   email: string;
 }
 
+interface ApolloContactStage {
+  id: string;
+  team_id: string;
+  display_name: string;
+  name: string;
+  display_order: number;
+}
+
 app.post("/webhook", async (req: Request, res: Response) => {
   const payload: WebhookPayload = req.body;
-  console.log("Webhook payload:", payload);
   if (!payload || !payload.result) {
     return res.status(400).send("Invalid payload");
   }
 
   const contactsToSave: ContactStored[] = [];
   payload?.result?.forEach((resultItem: any) => {
-    console.log("Result Item:", resultItem);
-    // console.log("Raw Properties:", resultItem?.raw?.properties);
     contactsToSave.push({
       id: resultItem?.raw?.id,
       email: resultItem?.fields.email,
@@ -73,46 +79,79 @@ app.post("/webhook", async (req: Request, res: Response) => {
 
 const processContacts = async () => {
   const storedContacts: any = await supabase.from("contacts").select();
+  // Get "Replied" contact stage ID from Apollo
+  const res = await axios.get(AMP_PROXY_BASE_URL + "/v1/contact_stages", {
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": `${AMP_API_KEY}`,
+      "x-amp-proxy-version": 1,
+      "x-amp-project-id": `${process.env.AMP_PROJECT_ID}`,
+      "x-amp-installation-id": `${process.env.AMP_APOLLO_INSTALLATION_ID}`,
+    },
+  });
 
-  console.log("storedContacts:", storedContacts);
-  const repliedContacts: Contact[] = [];
+  const contactStages: ApolloContactStage[] = res.data.contact_stages;
+  const repliedStage = contactStages.find(
+    (stage: ApolloContactStage) => stage.name === "Replied"
+  );
 
-  for (const contact of [storedContacts.data[0]]) { // FIXME: Update this when proxy response is correct. 
-    const response = await axios.post(
-      APOLLO_AMP_PROXY_API_URL,
-      {
-        q_keywords: contact.email,
-        contact_stage_ids: ["6508dea16d3b6400a3ed7034"], // TODO: Get this dynamically from Apollo API.
+  const response = await axios.post(
+    AMP_PROXY_BASE_URL + "/v1/contacts/search",
+    {
+      contact_stage_ids: [repliedStage?.id],
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": `${AMP_API_KEY}`,
+        "x-amp-proxy-version": 1,
+        "x-amp-project-id": `${process.env.AMP_PROJECT_ID}`,
+        "x-amp-installation-id": `${process.env.AMP_APOLLO_INSTALLATION_ID}`,
       },
-      {
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": `${AMP_API_KEY}`,
-          "x-amp-proxy-version": 1,
-          "x-amp-project-id": `${process.env.AMP_PROJECT_ID}`,
-          "x-amp-installation-id": `${process.env.AMP_INSTALLATION_ID}`,
-        },
-      }
-    );
-
-    console.log("Apollo Response:", response.data);
-
-    const contactsInApollo = response.data.contacts;
-
-    // Check if the contact is in the "Replied" stage
-    if (contactsInApollo && contactsInApollo.length > 0) {
-      repliedContacts.push(...contactsInApollo);
     }
-  }
+  );
 
-  console.log("Replied Contacts:", repliedContacts);
-  // TODO: Add a way to update these contact's `amp_has_replied` field in HubSpot
+  const repliedContacts = response.data.contacts;
+
+  const commonContacts: Contact[] = storedContacts?.data?.filter(
+    (storedContact: { email: any }) =>
+      repliedContacts.some(
+        (repliedContact: { email: any }) =>
+          storedContact.email === repliedContact.email
+      )
+  );
+
+  console.log("Replied Contacts in HubSpot:", commonContacts);
+
+  // Add a way to update these contact's `amp_apollo_has_replied_email` field in HubSpot
+  const batchUpdateHubSpot = await axios.post(
+    AMP_PROXY_BASE_URL + "/crm/v3/objects/contacts/batch/update",
+    {
+      inputs: commonContacts.map((contact) => ({
+        id: contact.id,
+        properties: {
+          amp_apollo_has_replied_email: "true",
+        },
+      })),
+    },
+    {
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": `${AMP_API_KEY}`,
+        "x-amp-proxy-version": 1,
+        "x-amp-project-id": `${process.env.AMP_PROJECT_ID}`,
+        "x-amp-installation-id": `${process.env.AMP_HUBSPOT_INSTALLATION_ID}`,
+      },
+    }
+  );
+
+  console.log("Batch Update HubSpot Response:", batchUpdateHubSpot.data?.status);
 };
 
 // Process the contacts stored in Supabase coming from HubSpot.
 app.get("/process", async (req: Request, res: Response) => {
   try {
-    await processContacts(); // TODO: Maybe run this as a cron job.
+    await processContacts();
     res.status(200).send("Processed contacts successfully");
   } catch (error) {
     console.error("Error processing contacts:", error);

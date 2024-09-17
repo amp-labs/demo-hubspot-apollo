@@ -1,33 +1,35 @@
 specVersion: 1.0.0
 integrations:
- - name: readHubspotListsAndContacts # name this anything you'd like
-   displayName: Read Lists and Contacts
-   provider: hubspot
-   read:
-    objects:
-      - objectName: lists
-        destination: listsWebhook
-        schedule: "0 0 * * *" # once a day
-        # Always read these fields
-        requiredFields:
-          - fieldName: name
-        backfill:
-          defaultPeriod:
-            days: 30
-      - objectName: contacts
-        destination: contactsWebhook
-        schedule: "0 0 * * *" # once a day
-        # Always read these fields
-        requiredFields:
-          - fieldName: name
-          - fieldName: email
-          - fieldName: id
-        backfill:
-          defaultPeriod:
-            days: 30
+  - name: readHubspotListsAndContacts # name this anything you'd like
+    displayName: Read Lists and Contacts
+    provider: hubspot
+    read:
+      objects:
+        - objectName: lists
+          destination: listsWebhook
+          schedule: "0 0 * * *" # once a day
+          # Always read these fields
+          requiredFields:
+            - fieldName: name
+          backfill:
+            defaultPeriod:
+              days: 30
+        - objectName: contacts
+          destination: contactsWebhook
+          schedule: "0 0 * * *" # once a day
+          # Always read these fields
+          requiredFields:
+            - fieldName: name
+            - fieldName: email
+            - fieldName: id
+          backfill:
+            defaultPeriod:
+              days: 30
+    proxy:
+      enabled: true
 
- - name: readApolloContacts 
-   displayName: Read Contacts from Apollo
-   provider: apollo
-   proxy:
-    enabled: true
+  - name: readApolloContacts
+    displayName: Read Contacts from Apollo
+    provider: apollo
+    proxy:
+      enabled: true
