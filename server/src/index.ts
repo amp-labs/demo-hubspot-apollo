@@ -63,7 +63,6 @@ app.post("/webhook", async (req: Request, res: Response) => {
     });
   });
 
-  console.log("Storing contacts in Supabase:", contactsToSave);
   // Store the contacts in Supabase for later processing
   const { error } = await supabase
     .from("contacts")
@@ -120,8 +119,6 @@ const processContacts = async () => {
           storedContact.email === repliedContact.email
       )
   );
-
-  console.log("Replied Contacts in HubSpot:", commonContacts);
 
   // Add a way to update these contact's `amp_apollo_has_replied_email` field in HubSpot
   const batchUpdateHubSpot = await axios.post(
