@@ -1,4 +1,4 @@
-# Demo-hubspot-apollo
+# Ampersand Demo App for Hubspot and Apollo integration
 
 This is a demo app to demonstrate the use of the Ampersand to build an integration use case involving Hubspot and Apollo. 
 
