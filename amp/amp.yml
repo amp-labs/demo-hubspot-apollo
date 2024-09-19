@@ -5,15 +5,6 @@ integrations:
     provider: hubspot
     read:
       objects:
-        - objectName: lists
-          destination: listsWebhook
-          schedule: "0 0 * * *" # once a day
-          # Always read these fields
-          requiredFields:
-            - fieldName: name
-          backfill:
-            defaultPeriod:
-              days: 30
         - objectName: contacts
           destination: contactsWebhook
           schedule: "0 0 * * *" # once a day
