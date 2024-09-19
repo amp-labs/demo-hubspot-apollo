@@ -2,10 +2,9 @@
 
 This is a demo app to demonstrate the use of the Ampersand to build an integration use case involving Hubspot and Apollo. 
 
-This project does the following: 
-
 # Overview 
 
+The app does the following: 
 1. Read Lists of contacts from Hubspot & syncs those to the backend of the demo app. 
 2. Reads from Apollo to understand which contacts have replied to messages / emails. 
 3. Correlate the contact with the correct Contact in Hubspot via its email.
