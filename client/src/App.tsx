@@ -10,7 +10,7 @@ function App() {
   const apolloIntegrationName = "readApolloContacts";
   const userId = "demoUserId";
   const userFullName = "Demo User";
-  const teamId = "demoTeamId";
+  const teamId = "ampersand-hubspot-demo-team-id";
   const teamName = "Demo Team Name";
 
   return (
