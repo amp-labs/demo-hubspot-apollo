@@ -1,6 +1,6 @@
 specVersion: 1.0.0
 integrations:
-  - name: readHubspotListsAndContacts # name this anything you'd like
+  - name: readHubspotContactsWithCustomFields # name this anything you'd like
     displayName: Read Lists and Contacts
     provider: hubspot
     read:
@@ -13,7 +13,6 @@ integrations:
             - fieldName: name
             - fieldName: email
             - fieldName: id
-          optionalFields:
             - mapToName: pronoun
               mapToDisplayName: Pronoun
               prompt: We will use this word when addressing this person in emails we send out.
