@@ -19,7 +19,7 @@ function App() {
         style={{
           margin: "15rem",
           display: "flex",
-          justifyContent: "space-between",
+          justifyContent: "center",
           alignItems: "center",
           flexDirection: "row",
         }}
@@ -27,33 +27,6 @@ function App() {
         <div style={{ display: "flex", marginTop:40 }}>
           <InstallIntegration
             integration={myIntegrationName}
-            consumerRef={userId}
-            consumerName={userFullName}
-            groupRef={teamId}
-            groupName={teamName}
-            onInstallSuccess={(installationId, configObject) =>
-              console.log(
-                `Successfully installed ${installationId} with configuration ${JSON.stringify(
-                  configObject,
-                  null,
-                  2
-                )}`
-              )
-            }
-            onUpdateSuccess={(installationId, configObject) =>
-              console.log(
-                `Successfully updated ${installationId} with configuration ${JSON.stringify(
-                  configObject,
-                  null,
-                  2
-                )}`
-              )
-            }
-          />
-        </div>
-        <div style={{ display: "flex" }}>
-          <InstallIntegration
-            integration={apolloIntegrationName}
             consumerRef={userId}
             consumerName={userFullName}
             groupRef={teamId}
