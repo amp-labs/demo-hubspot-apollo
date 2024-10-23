@@ -7,7 +7,7 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@amp-labs/react": "*",
+        "@amp-labs/react": "../../react",
         "@chakra-ui/react": "^2.8.2",
         "@chakra-ui/system": "^2.6.2",
         "@emotion/react": "^11.13.3",
