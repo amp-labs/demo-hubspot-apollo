@@ -1,4 +1,5 @@
 import { AmpersandProvider, InstallIntegration } from "@amp-labs/react";
+import '@amp-labs/react/styles';
 
 function App() {
   const options = {
