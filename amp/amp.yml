@@ -13,6 +13,7 @@ integrations:
             - fieldName: name
             - fieldName: email
             - fieldName: id
+          optionalFieldsAuto: all
           backfill:
             defaultPeriod:
               days: 30
@@ -22,5 +23,11 @@ integrations:
   - name: readApolloContacts
     displayName: Read Contacts from Apollo
     provider: apollo
+    proxy:
+      enabled: true
+
+  - name: readSalesforceContacts
+    displayName: Read Contacts from Salesforce
+    provider: salesforce
     proxy:
       enabled: true
