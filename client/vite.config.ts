@@ -12,6 +12,11 @@ export default defineConfig({
     server: {
         port: 3006,
     },
+    resolve: {
+        alias: {
+          "@": path.resolve(__dirname, "./src"),
+        },
+    },
     plugins: [
         react(),
         dts({
@@ -20,19 +25,9 @@ export default defineConfig({
     ],
     build: {
         sourcemap: true,
-        lib: {
-            entry: path.resolve(__dirname, 'src/lib/index.ts'),
-            name: 'MyLib',
-            formats: ['es', 'umd'],
-            fileName: (format) => `my-lib.${format}.js`,
-        },
         rollupOptions: {
-            external: ['react', 'react-dom', ],
-            output: {
-                globals: {
-                    react: 'React',
-                    'react-dom': 'ReactDOM'
-                },
+            input: {
+                main: '/index.html',
             },
         },
     },
