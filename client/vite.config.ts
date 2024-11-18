@@ -4,6 +4,11 @@ import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
 
 export default defineConfig({
+    define: {
+        'process.env': {
+          REACT_APP_AMP_SERVER: process.env.REACT_APP_AMP_SERVER,
+        },
+    },
     server: {
         port: 3006,
     },
