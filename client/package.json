@@ -7,14 +7,14 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@amp-labs/react": "1.17.2",
+        "@amp-labs/react": "https://storage.googleapis.com/ampersand/react/amp-react-enable-csrf-protection.tgz",
         "@chakra-ui/react": "^2.8.2",
         "@chakra-ui/system": "^2.6.2",
         "@emotion/react": "^11.13.3",
         "@emotion/styled": "^11.13.0",
         "framer-motion": "^11.3.30",
-        "react": "^18.0.0",
-        "react-dom": "^18.0.0",
+        "react": "16.8.0 || 17.x || 18.x",
+        "react-dom": "16.8.0 || 17.x || 18.x",
         "react-script-hook": "^1.7.2"
     },
     "devDependencies": {
