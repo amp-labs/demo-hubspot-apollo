@@ -7,7 +7,7 @@
         "preview": "vite preview"
     },
     "dependencies": {
-        "@amp-labs/react": "https://storage.googleapis.com/ampersand/react/amp-react-enable-csrf-protection.tgz",
+        "@amp-labs/react": "1.17.5",
         "@chakra-ui/react": "^2.8.2",
         "@chakra-ui/system": "^2.6.2",
         "@emotion/react": "^11.13.3",
