@@ -17,7 +17,7 @@ function App() {
     <AmpersandProvider options={options}>
       <div
         style={{
-          margin: "15rem",
+          margin: "5rem",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
