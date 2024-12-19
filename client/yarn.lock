@@ -2,12 +2,11 @@
 # yarn lockfile v1
 
 
-"@amp-labs/react@^1.17.5":
-  version "1.17.5"
-  resolved "https://registry.yarnpkg.com/@amp-labs/react/-/react-1.17.5.tgz#d595b571b60551fcf091bec88f936213d114fa5b"
-  integrity sha512-GTwXTuy8LqXAR+HcMtdc0DewEajc7z+wcWb+zZykbadex8b3nWz/cG078TllkqAYK7otWdIH6LAWC25rDe26Rw==
+"@amp-labs/react@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@amp-labs/react/-/react-2.1.0.tgz#57e63e9270ce07cc66ce58525a59e150e8c2141b"
+  integrity sha512-C2MpgAKOC5hIHLVUIeISzGm+9qEbJ40rC+t+AMiJCu0/oGnAF2AOc1u4dSNqe9dg7Qhe6fQdfL2Y3FgePVYltg==
   dependencies:
-    "@chakra-ui/icons" "^2.1.1"
     "@radix-ui/react-checkbox" "^1.1.2"
     "@radix-ui/react-icons" "^1.3.0"
     "@radix-ui/react-tabs" "^1.1.1"
@@ -498,13 +497,6 @@
   integrity sha512-xxjGLvlX2Ys4H0iHrI16t74rG9EBcpFvJ3Y3B7KMQTrnW34Kf7Da/UC8J67Gtx85mTHW020ml85SVPKORWNNKQ==
   dependencies:
     "@chakra-ui/shared-utils" "2.0.5"
-
-"@chakra-ui/icons@^2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@chakra-ui/icons/-/icons-2.1.1.tgz#58ff0f9e703f2f4f89debd600ce4e438f43f9c9a"
-  integrity sha512-3p30hdo4LlRZTT5CwoAJq3G9fHI0wDc0pBaMHj4SUn0yomO+RcDRlzhdXqdr5cVnzax44sqXJVnf3oQG0eI+4g==
-  dependencies:
-    "@chakra-ui/icon" "3.2.0"
 
 "@chakra-ui/image@2.1.0":
   version "2.1.0"

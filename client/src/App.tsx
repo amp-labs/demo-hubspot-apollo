@@ -1,5 +1,7 @@
 import { AmpersandProvider, InstallIntegration } from "@amp-labs/react";
 
+import '@amp-labs/react/styles';
+
 function App() {
   const options = {
     projectId: import.meta.env.VITE_AMPERSAND_PROJECT_ID as string, // Your Ampersand project ID.
