@@ -1,0 +1,18 @@
+name: Deploy AMP integrations
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    
+    - name: Deploy ampersand integrations
+      uses: amp-labs/cli-action@v1
+      with:
+        api_key: ${{ secrets.AMP_API_KEY }}
+        project_id: ${{ secrets.AMP_PROJECT_ID }}
+        directory_path: "./amp"
+      
