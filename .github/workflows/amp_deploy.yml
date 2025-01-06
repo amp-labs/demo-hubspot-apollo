@@ -9,7 +9,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     
-    - name: Deploy ampersand integrations
+    - name: Deploy Ampersand integrations
       uses: amp-labs/cli-action@v1
       with:
         api_key: ${{ secrets.AMP_API_KEY }}
