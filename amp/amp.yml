@@ -16,6 +16,10 @@ integrations:
           backfill:
             defaultPeriod:
               days: 30
+    write:
+      objects:
+        - objectName: contacts
+          destination: contactsWebhook
     proxy:
       enabled: true
 
