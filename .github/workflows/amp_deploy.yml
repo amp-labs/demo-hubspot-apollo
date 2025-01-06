@@ -1,4 +1,4 @@
-name: Deploy AMP integrations
+name: Deploy Ampersand integrations
 
 on: [push]
 
