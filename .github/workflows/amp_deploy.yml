@@ -1,18 +1,32 @@
-name: Deploy Ampersand integrations
+name: Deploy Ampersand Integrations
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - "**"
 
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
-    
-    - name: Deploy Ampersand integrations
+
+    - name: Deploy to test environment
+      if: github.event_name == 'pull_request'
       uses: amp-labs/cli-action@v1
       with:
-        api_key: ${{ secrets.AMP_API_KEY }}
-        project_id: ${{ secrets.AMP_PROJECT_ID }}
+        api_key: ${{ secrets.AMP_DEV_API_KEY }}
+        project_id: ${{ secrets.AMP_DEV_PROJECT_ID }}
         directory_path: "./amp"
-      
+
+    - name: Deploy to prod environment
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      uses: amp-labs/cli-action@v1
+      with:
+        api_key: ${{ secrets.AMP_PROD_API_KEY }}
+        project_id: ${{ secrets.AMP_PROD_PROJECT_ID }}
+        directory_path: "./amp"
