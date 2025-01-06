@@ -19,7 +19,6 @@ integrations:
     write:
       objects:
         - objectName: contacts
-          destination: contactsWebhook
     proxy:
       enabled: true
 
