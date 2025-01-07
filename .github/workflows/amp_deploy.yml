@@ -4,9 +4,13 @@ on:
   push:
     branches:
       - main
+    paths:
+      - amp/amp.yml
   pull_request:
     branches:
       - "**"
+    paths:
+      - amp/amp.yml
 
 jobs:
   deploy:
